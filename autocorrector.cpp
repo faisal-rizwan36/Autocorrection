@@ -74,8 +74,8 @@ set <string> WordEditing(string word)
 	// Rearranging
 	for (int i = 0; i < word.length() - 1; i++)
 	{
-		words = word.substr(0, i) + word[i + 1] + word[i] + word.substr(i + 2);
-		edited_words.insert(words);
+		edited_word = word.substr(0, i) + word[i + 1] + word[i] + word.substr(i + 2);
+		words.insert(edited_word);
  	}
 
 
@@ -83,11 +83,11 @@ set <string> WordEditing(string word)
 	// Deleting each character one by one
 	for (int i = 0; i < word.length(); i++)
 	{
-		words = word.substr(0, i) + word.substr(i + 1);
-		edited_words.insert(words);
+		edited_word = word.substr(0, i) + word.substr(i + 1);
+		words.insert(edited_word);
 	}
 
-	return edited_words;
+	return words;
 }
 
 
