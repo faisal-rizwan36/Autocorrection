@@ -94,11 +94,11 @@ set <string> WordEditing(string word)
 vector <string> AutoSuggestions(string word) 
 {
 
-	vector <string> candidates;
+	vector <string> corrected_word_list;
 	if(BinarySearch(word))
 	{
-		candidates.push_back(word);
-		return candidates;	
+		corrected_word_list.push_back(word);
+		return corrected_word_list;	
 	}
 
 	autocorrect = true;
@@ -107,12 +107,12 @@ vector <string> AutoSuggestions(string word)
 	for (set<string>::iterator it = edit1.begin() ; it != edit1.end() ; it++)
 	{
 		if(BinarySearch(*it))
-			candidates.push_back(*it);
+			corrected_word_list.push_back(*it);
 	}
-	if (candidates.size() > 0) 
-		return candidates;
+	if (corrected_word_list.size() > 0) 
+		return corrected_word_list;
 
-	candidates.clear();
+	corrected_word_list.clear();
 
 	for (set<string>::iterator it = edit1.begin() ; it != edit1.end() ; it++)
 	{
@@ -120,16 +120,16 @@ vector <string> AutoSuggestions(string word)
 		for (set<string>::iterator it2 = edit1.begin() ; it2 != edit1.end() ; it2++)
 		{
 			if(BinarySearch(*it2))
-				candidates.push_back(*it2);
+				corrected_word_list.push_back(*it2);
 		}
 	}
-	if (candidates.size() > 0) 
-		return candidates;
+	if (corrected_word_list.size() > 0) 
+		return corrected_word_list;
 	
 	autocorrect = false;
-	candidates.clear();
-	candidates.push_back(word);
-	return candidates;
+	corrected_word_list.clear();
+	corrected_word_list.push_back(word);
+	return corrected_word_list;
 }
 
 
